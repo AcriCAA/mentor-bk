@@ -10,7 +10,9 @@ class SMSRecipient extends Model
  
   protected $fillable = ['smsname', 'number','channel'];
 
-   protected $encryptable = [
+  use Encryptable; 
+
+  protected $encryptable = [
         'number'
     ];
 
