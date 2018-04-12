@@ -4,15 +4,20 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-
+use App\Http\Traits\Encryptable; 
 
 class SMSRecipient extends Model
 {
  
-  protected $fillable = ['smsname', 'number','channel'];
-
   
 
+      use Encryptable;
+
+    protected $encryptable = [
+        'number'
+    ];
+
+    protected $fillable = ['smsname', 'number','channel'];
 
 
     public function phone()
@@ -26,12 +31,6 @@ class SMSRecipient extends Model
 		// this is the equivalent 
 		$this->phone()->create(compact('number'));
 
-		//of this
-
-		  // Comment::create([
-    //         'body' => request('body'), 
-    //         'post_id' => this->id
-    //     ]);
 
 	}
 
