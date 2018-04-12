@@ -11,11 +11,20 @@ use App\Notifications\IncomingTextMessage;
 use Illuminate\Database\Eloquent\Model;
 
 
+
+use App\Http\Traits\Encryptable; 
+
+
+
 class IncomingMessage extends Model
 {
 
 
-    
+  use Encryptable; 
+
+  protected $encryptable = [
+        'number'
+    ];    
     
    
 

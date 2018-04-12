@@ -3,7 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
-use App\Http\Traits\Encryptable; 
+
 
 
 class SMSRecipient extends Model
@@ -12,11 +12,7 @@ class SMSRecipient extends Model
   protected $fillable = ['smsname', 'number','channel'];
 
   
-  use Encryptable; 
 
-  protected $encryptable = [
-        'number'
-    ];
 
 
     public function phone()
