@@ -34,12 +34,7 @@ class IncomingMessageController extends Controller
 {
 
 
-    use Encryptable;
 
-    protected $encryptable = [
-        'number'
-        
-    ];
 
 
   public function __construct()
