@@ -9,11 +9,11 @@ use App\Http\Traits\Encryptable;
 class Phone extends Model
 {
 
-    // use Encryptable;
+    use Encryptable;
 
-    // protected $encryptable = [
-    //     'number'
-    // ];
+    protected $encryptable = [
+        'number'
+    ];
 
 	protected $fillable = ['number'];
 
