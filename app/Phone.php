@@ -3,9 +3,16 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Http\Traits\Encryptable;
 
 class Phone extends Model
 {
+
+
+
+    protected $encryptable = [
+        'number'
+    ];
 
 	protected $fillable = ['number'];
 
