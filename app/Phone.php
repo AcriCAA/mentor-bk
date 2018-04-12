@@ -12,10 +12,7 @@ class Phone extends Model
     use Encryptable;
 
     protected $encryptable = [
-        'number',
-        'medical_conditions',
-        'allergies',
-        'emergency_contact_id',
+        'number'
     ];
 
 	protected $fillable = ['number'];
