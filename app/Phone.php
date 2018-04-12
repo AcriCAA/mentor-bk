@@ -24,5 +24,10 @@ class Phone extends Model
 		  // return $this->belongsTo('App\User', 'foreign_key');
 	}
 
+	public function number(){
+
+		return $this->number; 
+	}
+
 
 }
