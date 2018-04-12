@@ -33,7 +33,11 @@ use App\Http\Traits\Encryptable;
 class IncomingMessageController extends Controller
 {
 
+  use Encryptable; 
 
+    protected $encryptable = [
+        'number'
+    ];
 
 
 
