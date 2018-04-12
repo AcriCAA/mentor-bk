@@ -18,14 +18,6 @@ use App\Http\Traits\Encryptable;
 
 class IncomingMessage extends Model
 {
-
-
-  use Encryptable; 
-
-  protected $encryptable = [
-        'number'
-    ];    
-    
    
 
 	protected $incoming_number; 
