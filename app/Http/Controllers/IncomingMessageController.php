@@ -167,10 +167,11 @@ class IncomingMessageController extends Controller
         
       }
 
+
+
     }
 
-   //
-    public function   (IncomingMessage $message, Phone $phone){
+    public function checkForPhone(IncomingMessage $message, Phone $phone){
 
        \Log::info('Checking for phone');
 
