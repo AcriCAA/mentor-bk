@@ -185,7 +185,7 @@ class IncomingMessageController extends Controller
         // }
 
 
-        return $phone->where('number', '=', $message->incoming_number)->first()->get();
+        return $phone->where('number', '=', $message->incoming_number)->first();
 
         // return $phone; 
 
