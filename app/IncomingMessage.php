@@ -22,7 +22,8 @@ class IncomingMessage extends Model
     use Encryptable;
 
     protected $encryptable = [
-        'number'
+        'number', 
+        'title'
         
     ];   
 

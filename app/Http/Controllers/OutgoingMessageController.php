@@ -17,12 +17,18 @@ use App\SMSRecipient;
 use GuzzleHttp\Client;
 use GuzzleHttp\Exception\RequestException;
 
-
+//Encrypt Numbers
+use App\Http\Traits\Encryptable; 
 
 class OutgoingMessageController extends Controller
 {
    
+    use Encryptable;
 
+    protected $encryptable = [
+        'number'
+        
+    ];   
    
 
 public function test(){
