@@ -3,7 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
-use Http\Traits\Encryptable; 
+use App\Http\Traits\Encryptable; 
 
 
 class SMSRecipient extends Model
