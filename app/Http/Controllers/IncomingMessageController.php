@@ -176,9 +176,9 @@ class IncomingMessageController extends Controller
          $phones = Phone::all(); 
 
          foreach($phones as $p){
-              if($p->where('number', '=', $message->incoming_number)->first()){
+              if($p->where('number', '=', $message->incoming_number)->first()) {
 
-                 $phone = $p
+                 $phone = $p;
 
               }
 
