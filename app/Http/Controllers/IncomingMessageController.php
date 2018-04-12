@@ -171,7 +171,23 @@ class IncomingMessageController extends Controller
 
       try {
 
-        return $phone->where('number', '=', $message->incoming_number)->first();
+         $phones = new Phone; 
+
+         $phones = Phone::all(); 
+
+         foreach($phones as $p){
+              if($p->where('number', '=', $message->incoming_number)->first()){
+
+                 $phone = $p
+
+              }
+
+        }
+
+      }
+
+        // return $phone->where('number', '=', $message->incoming_number)->first();
+        $phone = $phone->where('number', '=', $message->incoming_number)->first();
 
       }
 
