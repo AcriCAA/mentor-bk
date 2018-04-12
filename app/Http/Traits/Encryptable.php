@@ -13,7 +13,7 @@ trait Encryptable
  
         if (in_array($key, $this->encryptable) && ( ! is_null($value)))
         {
-            $value = Crypt::decrypt($value);
+            $value = Crypt::decryptString($value);
         }
  
         return $value;
@@ -23,7 +23,7 @@ trait Encryptable
     {
         if (in_array($key, $this->encryptable))
         {
-            $value = Crypt::encrypt($value);
+            $value = Crypt::decryptString($value);
         }
  
         return parent::setAttribute($key, $value);
