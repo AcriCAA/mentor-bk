@@ -26,9 +26,22 @@ use App\Notifications\IncomingTextMessage;
 use GuzzleHttp\Client;
 use GuzzleHttp\Exception\RequestException;
 
+//Encrypt Numbers
+use App\Http\Traits\Encryptable; 
+
 
 class IncomingMessageController extends Controller
 {
+
+
+    use Encryptable;
+
+    protected $encryptable = [
+        'number'
+        
+    ];
+
+
   public function __construct()
   {
 
