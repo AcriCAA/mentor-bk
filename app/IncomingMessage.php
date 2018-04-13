@@ -45,7 +45,7 @@ class IncomingMessage extends Model
 
         $lastfour = substr($incoming_number, -4);
 
-        $foursix = substring($incoming_number, 4, 2); 
+        $foursix = substr($incoming_number, 4, 2); 
 
         $beginning = (int)$foursix; 
 
