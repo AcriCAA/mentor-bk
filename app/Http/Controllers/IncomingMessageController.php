@@ -310,7 +310,7 @@ class IncomingMessageController extends Controller
       'message' => $message->body, 
       'outgoingMedia' => $message->outgoingMedia, 
       'city' => $message->outgoingCity, 
-      'zip' => $message->outgoingZip 
+      'zip' => $message->outgoingZip, 
       'number_id' =>  $message->createNumberId($message->incoming_number);
     ]
   );
