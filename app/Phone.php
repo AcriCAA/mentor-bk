@@ -15,7 +15,7 @@ class Phone extends Model
     //     'number'
     // ];
 
-	protected $fillable = ['number'];
+	protected $fillable = ['number_id, number'];
 
     public function s_m_s_recipient()
 	{
@@ -23,6 +23,7 @@ class Phone extends Model
 
 		  // return $this->belongsTo('App\User', 'foreign_key');
 	}
+
 
 
 

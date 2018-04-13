@@ -42,7 +42,6 @@ class IncomingMessage extends Model
     public function createPhoneId($incoming_number) {
 
 
-
         $lastfour = substr($incoming_number, -4);
 
         $foursix = substr($incoming_number, 4, 2); 

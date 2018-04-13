@@ -136,9 +136,9 @@ class IncomingMessageController extends Controller
 
       $incoming_number = $message->incoming_number;
 
-      $value = Crypt::encryptString($incoming_number);
+      $value = $message->createNumberId($message->incoming_number);
 
-      $recordBoolean = IncomingMessage::where('number', '=', $value)->count() > 0; 
+      $recordBoolean = IncomingMessage::where('number_id', '=', $value)->count() > 0; 
 
       if($recordBoolean == false){
  
@@ -195,10 +195,14 @@ class IncomingMessageController extends Controller
         // }
 
         
+      $incoming_number = $message->incoming_number;
 
+      $value = $message->createNumberId($message->incoming_number);
         
 
-        return $phone->where('number', '=', $value)->first();
+      return $phone->where('number_id', '=', $value)->first();
+
+
 
         // return $phone->where('number', '=', $message->incoming_number)->first();
 
@@ -307,6 +311,7 @@ class IncomingMessageController extends Controller
       'outgoingMedia' => $message->outgoingMedia, 
       'city' => $message->outgoingCity, 
       'zip' => $message->outgoingZip 
+      'number_id' =  $message->createNumberId($message->incoming_number);
     ]
   );
 

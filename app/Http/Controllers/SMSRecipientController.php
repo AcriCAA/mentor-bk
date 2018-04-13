@@ -93,7 +93,8 @@ class SMSRecipientController extends Controller
 	$recipient->channel = $channel; 
 
 	$recipient->save();
-	$recipient->addPhone($request_no); 
+	$number_id = $recipient->createPhoneId($request_no); 
+	$recipient->addPhone($request_no, $number_id); 
 
 
 
