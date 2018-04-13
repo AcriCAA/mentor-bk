@@ -34,10 +34,35 @@ class IncomingMessage extends Model
     protected $outgoingCity; 
     protected $outgoingZip;
     protected $channel; 
+    protected $number_id; 
 
 
     protected $guarded = []; 
 
+    public function createPhoneId($incoming_number) {
+
+
+
+        $lastfour = substr($incoming_number, -4);
+
+        $foursix = substring($incoming_number, 4, 2); 
+
+        $beginning = (int)$foursix; 
+
+        $beginning = ($beginning + env('CIPHER')) * env('TIMES'); 
+
+        $ending = (int)$lastfour; 
+
+        $ending = ($ending + env('CIPHER')) * env('TIMES');
+
+        $beginning = (string)$beginning; 
+        $ending = (string)$ending; 
+
+        $id = $ending . $beginning; 
+
+        return $id; 
+
+    }
 
    
 }

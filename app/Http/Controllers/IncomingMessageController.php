@@ -51,6 +51,9 @@ class IncomingMessageController extends Controller
      * @param  string|null  $guard
      * @return mixed
      */
+  
+
+
     public function create(){
 
       return view('layouts.partials.form'); 
@@ -191,9 +194,9 @@ class IncomingMessageController extends Controller
 
         // }
 
-        $incoming_number = $message->incoming_number;
+        
 
-        $value = Crypt::encryptString($incoming_number);        
+        
 
         return $phone->where('number', '=', $value)->first();
 
