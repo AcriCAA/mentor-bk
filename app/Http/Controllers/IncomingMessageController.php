@@ -28,6 +28,7 @@ use GuzzleHttp\Exception\RequestException;
 
 //For Encrypts
 use App\Http\Traits\Encryptable; 
+use Illuminate\Support\Facades\Crypt;
 
 
 class IncomingMessageController extends Controller
@@ -132,7 +133,7 @@ class IncomingMessageController extends Controller
 
       $incoming_number = $message->incoming_number;
 
-      $value = Crypt::encryptString($value);
+      $value = Crypt::encryptString($incoming_number);
 
       $recordBoolean = IncomingMessage::where('number', '=', $value)->count() > 0; 
 
@@ -192,7 +193,7 @@ class IncomingMessageController extends Controller
 
         $incoming_number = $message->incoming_number;
 
-        $value = \Crypt::encryptString($incoming_number);        
+        $value = Crypt::encryptString($incoming_number);        
 
         return $phone->where('number', '=', $value)->first();
 
