@@ -192,7 +192,7 @@ class IncomingMessageController extends Controller
 
         $incoming_number = $message->incoming_number;
 
-        $value = Crypt::encryptString($value);        
+        $value = \Crypt::encryptString($incoming_number);        
 
         return $phone->where('number', '=', $value)->first();
 
