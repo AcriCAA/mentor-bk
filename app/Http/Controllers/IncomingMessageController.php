@@ -26,6 +26,9 @@ use App\Notifications\IncomingTextMessage;
 use GuzzleHttp\Client;
 use GuzzleHttp\Exception\RequestException;
 
+//For Encrypts
+use App\Http\Traits\Encryptable; 
+
 
 class IncomingMessageController extends Controller
 {
@@ -118,7 +121,6 @@ class IncomingMessageController extends Controller
     $this->store($message); 
 
 
-
   }
 
 
@@ -128,7 +130,11 @@ class IncomingMessageController extends Controller
 
     try {
 
-      $recordBoolean = IncomingMessage::where('number', '=', $message->incoming_number)->count() > 0; 
+      $incoming_number = $message->incoming_number;
+
+      $value = Crypt::encryptString($value);
+
+      $recordBoolean = IncomingMessage::where('number', '=', $value)->count() > 0; 
 
       if($recordBoolean == false){
  
@@ -162,7 +168,6 @@ class IncomingMessageController extends Controller
       }
 
 
-
     }
 
     public function checkForPhone(IncomingMessage $message, Phone $phone){
@@ -171,24 +176,29 @@ class IncomingMessageController extends Controller
 
       try {
 
-         $phones = new Phone; 
+        //  $phones = new Phone; 
 
-         $phones = Phone::all(); 
+        //  $phones = Phone::all(); 
 
-         foreach($phones as $p){
-              $number = $p->number; 
-              if($number == $message->incoming_number) {
+        //  foreach($phones as $p){
+        //       $number = $p->number; 
+        //       if($number == $message->incoming_number) {
 
-                 $phone = $p;
+        //          $phone = $p;
 
-              }
+        //       }
 
-        }
+        // }
 
+        $incoming_number = $message->incoming_number;
+
+        $value = Crypt::encryptString($value);        
+
+        return $phone->where('number', '=', $value)->first();
 
         // return $phone->where('number', '=', $message->incoming_number)->first();
 
-        return $phone; 
+        // return $phone; 
 
       }
 
@@ -274,8 +284,7 @@ class IncomingMessageController extends Controller
   }
   
 	/**
-     * Store the message in the db and auto-reply if this is the first message from the 
-     * number
+     * Store the message in the db 
      *
      * @param  \Illuminate\Http\Request  $request
      *
