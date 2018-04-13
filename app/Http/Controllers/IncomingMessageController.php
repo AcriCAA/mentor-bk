@@ -136,7 +136,7 @@ class IncomingMessageController extends Controller
 
       $incoming_number = $message->incoming_number;
 
-      $value = $message->createNumberId($message->incoming_number);
+      $value = $message->createPhoneId($message->incoming_number);
 
       $recordBoolean = IncomingMessage::where('number_id', '=', $value)->count() > 0; 
 
@@ -197,7 +197,7 @@ class IncomingMessageController extends Controller
         
       $incoming_number = $message->incoming_number;
 
-      $value = $message->createNumberId($message->incoming_number);
+      $value = $message->createPhoneId($message->incoming_number);
         
 
       return $phone->where('number_id', '=', $value)->first();
