@@ -15,7 +15,10 @@ class Phone extends Model
     //     'number'
     // ];
 
-	protected $fillable = ['number_id, number'];
+	protected $encryptable = [
+			'number_id', 
+			'number'
+		];
 
     public function s_m_s_recipient()
 	{

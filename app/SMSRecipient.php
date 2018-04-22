@@ -14,7 +14,8 @@ class SMSRecipient extends Model
       use Encryptable;
 
     protected $encryptable = [
-        'number'
+        'number', 
+        'number_id'
     ];
 
     protected $fillable = ['smsname', 'number','channel'];
@@ -48,11 +49,11 @@ class SMSRecipient extends Model
 
         $beginning = (int)$foursix; 
 
-        $beginning = ($beginning + env('CIPHER')) * env('TIMES'); 
+        $beginning = ($beginning + env('CIPHER')) * env('CIPHER_2'); 
 
         $ending = (int)$lastfour; 
 
-        $ending = ($ending + env('CIPHER')) * env('TIMES');
+        $ending = ($ending + env('CIPHER')) * env('CIPHER_2');
 
         $beginning = (string)$beginning; 
         $ending = (string)$ending; 
