@@ -18,7 +18,7 @@ class SMSRecipient extends Model
         'number_id'
     ];
 
-    protected $fillable = ['smsname', 'number','channel'];
+    protected $fillable = ['smsname', 'number', 'number_id', 'channel'];
 
 
     public function phone()
