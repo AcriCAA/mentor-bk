@@ -11,7 +11,7 @@ class SMSRecipient extends Model
  
   
 
-      use Encryptable;
+    use Encryptable;
 
     protected $encryptable = [
         'number', 
@@ -28,10 +28,20 @@ class SMSRecipient extends Model
 
     public function addPhone($number, $number_id){
 
-		
+		$number = encrypt($number); 
 
 		// this is the equivalent 
 		$this->phone()->create(compact('number', 'number_id'));
+        // Phone::create(
+        //     [
+
+        //         'number_id' => $number_id, 
+        //         'number' => $number, 
+
+
+        //     ]
+
+        // );
 				  // Comment::create([
     //         'body' => request('body'), 
     //         'post_id' => this->id
@@ -43,7 +53,7 @@ class SMSRecipient extends Model
 	public function createPhoneId($incoming_number) {
 
 
-        $lastfour = substr($incoming_number, -4);
+        $last = substr($incoming_number, -4);
 
         $foursix = substr($incoming_number, 4, 2); 
 
@@ -51,7 +61,7 @@ class SMSRecipient extends Model
 
         $beginning = ($beginning + env('CIPHER')) * env('CIPHER_2'); 
 
-        $ending = (int)$lastfour; 
+        $ending = (int)$last; 
 
         $ending = ($ending + env('CIPHER')) * env('CIPHER_2');
 
