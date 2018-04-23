@@ -118,8 +118,10 @@ class IncomingMessageController extends Controller
     $phone = $this->checkForPhone($message, $phone);
 
    //  //if we have that phone (!null) then update the message with the corresponding name
-    if($phone != null)
+    if($phone != null){
       $this->updateIncomingMessage($message, $phone); 
+       \Log::info($phone->s_m_s_recipient_id);
+    }
     
     $this->sendMessageToSlack($message);
     $this->store($message); 
@@ -238,7 +240,7 @@ class IncomingMessageController extends Controller
       //if the phone number exists in the db, look up the corresponding recipient and store it in sms_recipient
 
       try{
-        \Log::info('Updating CHANNEL');
+
         if(SMSRecipient::where('id','=',$phone->s_m_s_recipient_id)->exists()){
           $sms_recipient = SMSRecipient::where('id','=',$phone->s_m_s_recipient_id)->first();
           
