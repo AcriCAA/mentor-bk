@@ -5,8 +5,9 @@ namespace App\Http\Controllers;
 use App\IncomingMessage;
 use App\Phone;
 use App\SMSRecipient; 
-
 use App\SlackSMSAttachment; 
+
+use App\Http\Controllers\HelperController; 
 
 use Illuminate\Http\Request;
 
@@ -137,7 +138,7 @@ class IncomingMessageController extends Controller
 
       $incoming_number = $message->incoming_number;
 
-      $value = $message->createPhoneId($message->incoming_number);
+      $value = HelperController::createPhoneId($message->incoming_number); 
 
       $recordBoolean = IncomingMessage::where('number_id', '=', $value)->count() > 0; 
 
@@ -198,7 +199,7 @@ class IncomingMessageController extends Controller
         
       $incoming_number = $message->incoming_number;
 
-      $value = $message->createPhoneId($message->incoming_number);
+      $value = HelperController::createPhoneId($message->incoming_number); 
         
       \Log::info('Phone id created value: ' . $value);
 

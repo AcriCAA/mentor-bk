@@ -6,6 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 use App\Http\Traits\Encryptable; 
 
+use App\Http\Controllers\HelperController
+
 class SMSRecipient extends Model
 {
  
@@ -49,31 +51,6 @@ class SMSRecipient extends Model
 
 
 	}
-
-	public function createPhoneId($incoming_number) {
-
-
-        $last = substr($incoming_number, -4);
-
-        $foursix = substr($incoming_number, 4, 2); 
-
-        $beginning = (int)$foursix; 
-
-        $beginning = ($beginning + env('CIPHER')) * env('CIPHER_2'); 
-
-        $ending = (int)$last; 
-
-        $ending = ($ending + env('CIPHER')) * env('CIPHER_2');
-
-        $beginning = (string)$beginning; 
-        $ending = (string)$ending; 
-
-        $id = $ending . $beginning; 
-
-        return $id; 
-
-    }
-
 
 
 	public function getNumber(){
