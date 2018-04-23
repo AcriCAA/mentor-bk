@@ -180,33 +180,33 @@ class IncomingMessageController extends Controller
 
       try {
 
-        //  $phones = new Phone; 
+         $phones = new Phone; 
 
-        //  $phones = Phone::all(); 
+         $phones = Phone::all(); 
 
-        //  foreach($phones as $p){
-        //       $number = $p->number; 
-        //       if($number == $message->incoming_number) {
+         foreach($phones as $p){
+              $number = $p->number; 
+              if($number == $message->incoming_number) {
 
-        //          $phone = $p;
+                 $phone = $p;
 
-        //       }
+              }
 
-        // }
+        }
 
         
-      $incoming_number = $message->incoming_number;
+      // $incoming_number = $message->incoming_number;
 
-      $value = $message->createPhoneId($message->incoming_number);
+      // $value = $message->createPhoneId($message->incoming_number);
         
 
-      return $phone->where('number_id', '=', $value)->first();
+      // return $phone->where('number_id', '=', $value)->first();
 
 
 
         // return $phone->where('number', '=', $message->incoming_number)->first();
 
-        // return $phone; 
+        return $phone; 
 
       }
 
