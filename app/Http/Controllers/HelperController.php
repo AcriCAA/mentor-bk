@@ -8,7 +8,7 @@ class HelperController extends Controller
 {
     //
 
-    	public function createPhoneId($incoming_number) {
+    	public static function createPhoneId($incoming_number) {
 
 
         $last = substr($incoming_number, -4);
