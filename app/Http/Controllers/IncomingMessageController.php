@@ -120,7 +120,6 @@ class IncomingMessageController extends Controller
    //  //if we have that phone (!null) then update the message with the corresponding name
     if($phone != null){
       $this->updateIncomingMessage($message, $phone); 
-       \Log::info($phone->s_m_s_recipient_id);
     }
     
     $this->sendMessageToSlack($message);
@@ -182,27 +181,28 @@ class IncomingMessageController extends Controller
 
       try {
 
-         $phones = new Phone; 
+        //  $phones = new Phone; 
 
-         $phones = Phone::all(); 
+        //  $phones = Phone::all(); 
 
-         foreach($phones as $p){
-              $number = $p->number; 
-              if($number == $message->incoming_number) {
+        //  foreach($phones as $p){
+        //       $number = $p->number; 
+        //       if($number == $message->incoming_number) {
 
-                 $phone = $p;
+        //          $phone = $p;
 
-              }
+        //       }
 
-        }
+        // }
 
         
-      // $incoming_number = $message->incoming_number;
+      $incoming_number = $message->incoming_number;
 
-      // $value = $message->createPhoneId($message->incoming_number);
+      $value = $message->createPhoneId($message->incoming_number);
         
+      \Log::info('Phone id created value: ' . $value);
 
-      // return $phone->where('number_id', '=', $value)->first();
+      return $phone->where('number_id', '=', $value)->first();
 
 
 
