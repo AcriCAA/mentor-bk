@@ -238,6 +238,7 @@ class IncomingMessageController extends Controller
       //if the phone number exists in the db, look up the corresponding recipient and store it in sms_recipient
 
       try{
+        \Log::info('Updating CHANNEL');
         if(SMSRecipient::where('id','=',$phone->s_m_s_recipient_id)->exists()){
           $sms_recipient = SMSRecipient::where('id','=',$phone->s_m_s_recipient_id)->first();
           
