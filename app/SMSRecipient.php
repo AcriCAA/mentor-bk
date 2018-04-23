@@ -31,7 +31,7 @@ class SMSRecipient extends Model
 
     public function addPhone($number, $number_id){
 
-		$number = encrypt($number); 
+		// $number = encrypt($number); 
 
 		// this is the equivalent 
 		$this->phone()->create(compact('number', 'number_id'));
