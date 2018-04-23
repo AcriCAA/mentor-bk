@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 
 use App\SMSRecipient;
 
+use App\Http\Controllers\HelperController;
+
 class SMSRecipientController extends Controller
 {
     //
@@ -22,7 +24,11 @@ class SMSRecipientController extends Controller
 	{
 
     	// latest()->get() orders them in descending order
-		$sms_recipients = SMSRecipient::latest()->get(); 
+		$sms_recipients = SMSRecipient::latest()->get();
+		foreach($sms_recipients as $s){
+
+
+		} 
 		return view('sms_recipients.index', compact('sms_recipients')); 
 	}
 
@@ -93,7 +99,7 @@ class SMSRecipientController extends Controller
 	$recipient->channel = $channel; 
 
 	$recipient->save();
-	$number_id = $recipient->createPhoneId($request_no); 
+	$number_id = HelperController::createPhoneId($request_no); 
 	$recipient->addPhone($request_no, $number_id); 
 
 
