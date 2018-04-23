@@ -16,11 +16,11 @@ class SMSRecipientController extends Controller
 {
     //
 
-     use Encryptable;
+    //  use Encryptable;
 
-    protected $encryptable = [
-        'number'
-    ];
+    // protected $encryptable = [
+    //     'number'
+    // ];
 
 	public function __construct () {
 

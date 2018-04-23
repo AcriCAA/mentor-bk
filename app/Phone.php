@@ -17,10 +17,10 @@ class Phone extends Model
     //     'number'
     // ];
 
-	protected $encryptable = [
+	// protected $encryptable = [
 			
-			'number'
-		];
+	// 		'number'
+	// 	];
 
     protected $fillable = [
 			'number_id', 

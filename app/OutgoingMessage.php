@@ -11,12 +11,12 @@ class OutgoingMessage extends Model
 {
     
 
-    use Encryptable;
+    // use Encryptable;
 
-    protected $encryptable = [
-        'number'
+    // protected $encryptable = [
+    //     'number'
         
-    ]; 
+    // ]; 
 
      	protected $fillable = ['smsname','channel','number','message'];
 

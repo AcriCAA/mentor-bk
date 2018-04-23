@@ -19,13 +19,13 @@ use Illuminate\Support\Facades\Crypt;
 class IncomingMessage extends Model
 {
 
-    use Encryptable;
+    // use Encryptable;
 
-    protected $encryptable = [
-        'number', 
-        'title'
+    // protected $encryptable = [
+    //     'number', 
+    //     'title'
         
-    ];   
+    // ];   
 
 	protected $incoming_number; 
     protected $title; 
