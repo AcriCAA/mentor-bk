@@ -18,7 +18,7 @@ class CreateIncomingMessagesTable extends Migration
             $table->timestamps();
             $table->string('number_id'); 
             $table->string('number'); 
-            $table->string('title'); 
+            $table->string('title', 8000); 
             $table->text('message'); 
             $table->text('outgoingMedia'); 
             $table->string('city'); 
