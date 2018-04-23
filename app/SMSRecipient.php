@@ -4,7 +4,9 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
+//For Encrypts
 use App\Http\Traits\Encryptable; 
+use Illuminate\Support\Facades\Crypt;
 
 use App\Http\Controllers\HelperController;
 
@@ -16,8 +18,7 @@ class SMSRecipient extends Model
     use Encryptable;
 
     protected $encryptable = [
-        'number', 
-        'number_id'
+        'number'
     ];
 
     protected $fillable = ['smsname', 'number', 'number_id', 'channel'];

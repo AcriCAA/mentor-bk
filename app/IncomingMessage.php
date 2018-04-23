@@ -10,9 +10,9 @@ use App\Notifications\IncomingTextMessage;
 
 use Illuminate\Database\Eloquent\Model;
 
-
-//For encryption
+//For Encrypts
 use App\Http\Traits\Encryptable; 
+use Illuminate\Support\Facades\Crypt;
 
 
 

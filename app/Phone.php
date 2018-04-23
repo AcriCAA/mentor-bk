@@ -4,7 +4,9 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
+//For Encrypts
 use App\Http\Traits\Encryptable; 
+use Illuminate\Support\Facades\Crypt;
 
 class Phone extends Model
 {
@@ -16,7 +18,7 @@ class Phone extends Model
     // ];
 
 	protected $encryptable = [
-			'number_id', 
+			
 			'number'
 		];
 

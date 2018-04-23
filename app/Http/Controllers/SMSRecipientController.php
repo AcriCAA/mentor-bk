@@ -8,9 +8,19 @@ use App\SMSRecipient;
 
 use App\Http\Controllers\HelperController;
 
+//For Encrypts
+use App\Http\Traits\Encryptable; 
+use Illuminate\Support\Facades\Crypt;
+
 class SMSRecipientController extends Controller
 {
     //
+
+     use Encryptable;
+
+    protected $encryptable = [
+        'number'
+    ];
 
 	public function __construct () {
 
@@ -25,10 +35,7 @@ class SMSRecipientController extends Controller
 
     	// latest()->get() orders them in descending order
 		$sms_recipients = SMSRecipient::latest()->get();
-		foreach($sms_recipients as $s){
 
-
-		} 
 		return view('sms_recipients.index', compact('sms_recipients')); 
 	}
 
