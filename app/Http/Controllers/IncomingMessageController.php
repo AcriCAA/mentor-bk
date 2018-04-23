@@ -324,7 +324,7 @@ class IncomingMessageController extends Controller
       'outgoingMedia' => $message->outgoingMedia, 
       'city' => $message->outgoingCity, 
       'zip' => $message->outgoingZip, 
-      'number_id' =>  $message->createPhoneId($message->incoming_number)
+      'number_id' =>  HelperController::createPhoneId($message->incoming_number)
     ]
   );
 
