@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 use App\Http\Traits\Encryptable; 
 
-use App\Http\Controllers\HelperController
+use App\Http\Controllers\HelperController;
 
 class SMSRecipient extends Model
 {
