@@ -245,6 +245,7 @@ class IncomingMessageController extends Controller
            // update the title to reflect the name of the recipient
           $message->title = 'From: ' . $sms_recipient->smsname . " " . $phone->number;
           $message->channel = $sms_recipient->channel;  
+           \Log::info('Channel set to: ' . $message->channel);
         }
       }
 
