@@ -9,13 +9,12 @@ class UsersTableSeeder extends Seeder
      *
      * @return void
      */
-    public function run()
+      public function run()
     {
         //
-
           DB::table('users')->insert([
             'name' => str_random(10),
-            'email' => 'acri.corey@gmail.com',
+            'email' => str_random(10).'@email.com',
             'password' => bcrypt('secret'),
         ]);
     }
