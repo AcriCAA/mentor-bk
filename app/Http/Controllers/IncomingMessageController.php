@@ -76,6 +76,8 @@ class IncomingMessageController extends Controller
 
     $message->channel = config('services.slack.default_channel'); 
 
+    $message->number_id = '[unknown]'; 
+
 
     
     
@@ -94,6 +96,7 @@ class IncomingMessageController extends Controller
 
    if(null != $request->input('From')){
      $message->incoming_number = $request->input('From');
+     $message->number_id = HelperController::createNumberId($message->incoming_number); 
      $title = 'From: '.$message->incoming_number;
      $message->title = $title; 
    }
@@ -126,7 +129,7 @@ class IncomingMessageController extends Controller
 
     try {
 
-      $recordBoolean = IncomingMessage::where('number', '=', $message->incoming_number)->count() > 0; 
+      $recordBoolean = IncomingMessage::where('number_id', '=', $message->number_id)->count() > 0; 
 
       if($recordBoolean == false){
  
@@ -170,7 +173,7 @@ class IncomingMessageController extends Controller
 
       try {
 
-        return $phone->where('number', '=', $message->incoming_number)->first();
+        return $phone->where('number_id', '=', $message->number_id)->first();
 
       }
 
@@ -271,7 +274,7 @@ class IncomingMessageController extends Controller
   IncomingMessage::create(
     [
       'number' => encrypt($message->incoming_number), 
-      'number_id' => HelperController::createPhoneId($message->incoming_number),
+      'number_id' =>encrypt($message->number_id),
       'title' => encrypt($message->title), 
       'message' => $message->body, 
       'outgoingMedia' => $message->outgoingMedia, 
