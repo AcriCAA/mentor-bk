@@ -41,21 +41,30 @@ class TwilioRequestValidator
         $request->toArray()
       );
 
+       if ($isValid) {
+           \Log::info('\n****NEW INCOMING MESSAGE****' . date('m/d/Y h:i:s a', time()) . "from url: " . $request->fullUrl());
+        return $next($request);
 
-      //Log the request
-      \Log::info('\n****NEW INCOMING MESSAGE****' . date('m/d/Y h:i:s a', time()) . "from url: " . $request->fullUrl());
+      } else {
+        return new Response('You are not Twilio :(', 403);
+      }
 
-      try {
-        if ($isValid) {
-         //log that it is valid
-         \Log::info('  Validated: ' . date('  m/d/Y h:i:s a  ', time()) . "  from url:  " . $request->fullUrl());
-         return $next($request);
-       }
-     } catch (Exception $e) {
-      report($e);
 
-      return false;
-    }
+
+    //   //Log the request
+    //   \Log::info('\n****NEW INCOMING MESSAGE****' . date('m/d/Y h:i:s a', time()) . "from url: " . $request->fullUrl());
+
+    //   try {
+    //     if ($isValid) {
+    //      //log that it is valid
+    //      \Log::info('  Validated: ' . date('  m/d/Y h:i:s a  ', time()) . "  from url:  " . $request->fullUrl());
+    //      return $next($request);
+    //    }
+    //  } catch (Exception $e) {
+    //   report($e);
+
+    //   return false;
+    // }
 
 
   }
