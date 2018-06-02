@@ -96,7 +96,7 @@ class IncomingMessageController extends Controller
 
    if(null != $request->input('From')){
      $message->incoming_number = $request->input('From');
-     $message->number_id = HelperController::createNumberId($message->incoming_number); 
+     $message->number_id = HelperController::createPhoneId($message->incoming_number); 
      $title = 'From: '.$message->incoming_number;
      $message->title = $title; 
    }
