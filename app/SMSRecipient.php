@@ -4,10 +4,12 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
+use App\Http\Controllers\HelperController;
+
 class SMSRecipient extends Model
 {
  
-  protected $fillable = ['smsname', 'number','channel'];
+  protected $fillable = ['smsname', 'number','number_id','channel'];
  //    public function user()
 	// {
 	// 	return $this->belongsTo(User::class); 
@@ -21,9 +23,12 @@ class SMSRecipient extends Model
 
     public function addPhone($number){
 
+    	$number_id = HelperController::createPhoneId($number); 
+
+    	$number = encrypt($number); 
 		
 		// this is the equivalent 
-		$this->phone()->create(compact('number'));
+		$this->phone()->create(compact('number', 'number_id'));
 
 		//of this
 
@@ -37,7 +42,8 @@ class SMSRecipient extends Model
 
 	public function getNumber(){
 
-		return $this->phone['number']; 
+
+		return decrypt($this->phone['number']);
 		
 		
 

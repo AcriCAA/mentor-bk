@@ -16,7 +16,7 @@ class CreateIncomingMessagesTable extends Migration
         Schema::create('incoming_messages', function (Blueprint $table) {
             $table->increments('id');
             $table->timestamps();
-            $table->string('number'); 
+            $table->string('number');   
             $table->string('title'); 
             $table->text('message'); 
             $table->text('outgoingMedia'); 

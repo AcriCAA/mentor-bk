@@ -16,10 +16,8 @@ class IncomingMessage extends Model
 
 
     
-    
-   
-
 	protected $incoming_number; 
+	protected $number_id; 
     protected $title; 
     protected $body; 
     protected $outgoingMedia;

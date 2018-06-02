@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\SMSRecipient;
+use App\Http\Controllers\HelperController; 
 
 class SMSRecipientController extends Controller
 {
@@ -81,7 +82,7 @@ class SMSRecipientController extends Controller
 
 	$channel = $this->cleanChannelName($request_name); 
 
-	
+	$number_id = HelperController::createPhoneId($request_no); 
 
 	// $number = new \App\Phone(['number' => $request_no]);
 	
@@ -91,9 +92,10 @@ class SMSRecipientController extends Controller
 
 	$recipient->smsname = $request_name; 
 	$recipient->channel = $channel; 
+	
 
 	$recipient->save();
-	$recipient->addPhone($request_no); 
+	$recipient->addPhone($request_no, $number_id); 
 
 
 

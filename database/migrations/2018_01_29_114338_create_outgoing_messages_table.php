@@ -18,7 +18,7 @@ class CreateOutgoingMessagesTable extends Migration
             $table->timestamps();
             $table->string('smsname'); 
             $table->string('channel'); 
-            $table->string('number');
+            $table->string('number_id');
             $table->text('message');
         });
     }
