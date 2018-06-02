@@ -272,7 +272,7 @@ class IncomingMessageController extends Controller
     [
       'number' => encrypt($message->incoming_number), 
       'number_id' => HelperController::createPhoneId($message->incoming_number),
-      'title' => $message->title, 
+      'title' => encrypt($message->title), 
       'message' => $message->body, 
       'outgoingMedia' => $message->outgoingMedia, 
       'city' => $message->outgoingCity, 
