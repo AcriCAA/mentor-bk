@@ -209,7 +209,7 @@ class IncomingMessageController extends Controller
           $sms_recipient = SMSRecipient::where('id','=',$phone->s_m_s_recipient_id)->first();
           
            // update the title to reflect the name of the recipient
-          $message->title = 'From: ' . $sms_recipient->smsname . " " . $phone->number;
+          $message->title = 'From: ' . $sms_recipient->smsname . " " . decrypt($phone->number);
           $message->channel = $sms_recipient->channel;  
         }
       }
@@ -274,7 +274,7 @@ class IncomingMessageController extends Controller
   IncomingMessage::create(
     [
       'number' => encrypt($message->incoming_number), 
-      'number_id' =>encrypt($message->number_id),
+      'number_id' =>$message->number_id,
       'title' => encrypt($message->title), 
       'message' => $message->body, 
       'outgoingMedia' => $message->outgoingMedia, 
