@@ -59,7 +59,7 @@ class IncomingMessageController extends Controller
      */
 	public function prepareMessage(Request $request){
 
-
+    // prepares message
     $message = new IncomingMessage(); 
 
     $message->incoming_number = '[unknown]';
